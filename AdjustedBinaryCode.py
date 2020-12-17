@@ -24,8 +24,6 @@ def adjusted_binary_codeCod(H,L,P):
     a = (2**(int(k)+1))-(delta + 1)
     b = 2*(delta + 1 - 2**int(k))
 
-    A = []
-
     if potenza_di_due == True:
         start = L
         for i in range (0,delta+1):
