@@ -30,8 +30,10 @@ class Contesto:
                     min = t
                     k = idx2
             return k
-        else: #non c'è il contesto cercato, lo aggiungo
+        else: #non c'è il contesto cercato, lo aggiungo e restituisco k=2
             Contesto.addContestoeValori(self, high, low, p)
+            k = 2
+            return k
 
     def addContestoeValori(self, high, low, p):
         arr_valori = []
