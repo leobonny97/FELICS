@@ -45,7 +45,7 @@ class Contesto:
                 arr_valori.append(len(GolombRice.golomb_rice(p - high - 1, k)))
         self.arr_contesti.append([delta])
         self.arr_contesti.append(arr_valori)
-
+    '''
     def contestoDecodificatore(self, high, low, p):
         delta = int(high - low)
         pos = -1
@@ -66,7 +66,7 @@ class Contesto:
             return k
         else:  # non c'è il contesto cercato, non posso decodificare
             return k
-
+    '''
 
     def getArray(self):
         return self.arr_contesti
