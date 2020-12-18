@@ -1,6 +1,6 @@
 import cv2 as cv
 import AdjustedBinaryCode as abc
-
+from pixelPosition import left_center_right
 path = "Immagini/2.jpg"
 
 img = cv.imread(path)
@@ -42,6 +42,7 @@ secondo = abc.dec_bin(due, 8)
 print("primo = "+str(uno)+" "+str(primo)+" secondo = "+str(due)+" "+str(secondo)+"\n\n"+str(array.shape)+"\n\nP  N1  N2  riga  colonna\n")
 
 indice = 0
+
 for riga in range(0,array.shape[0]):
     for colonna in range(0, array.shape[1]):
         if (indice > 1):
@@ -56,11 +57,14 @@ for riga in range(0,array.shape[0]):
                 N1 = array[riga - 1, colonna]  # sopra
                 N2 = array[riga, colonna - 1]  # sinistra
             print(str(P)+" "+str(N1)+" "+str(N2)+"   "+str(riga)+"   "+str(colonna))
-
-
-
-            # INSERIRE QUI LA PARTE DI FRANCESCO
-
+            #PARTE CENTRALE
+            if N1 >= N2:        #se sono uguali chi è high è indifferente
+                high = N1
+                low = N2
+            else:
+                high = N2
+                low = N1
+            result = left_center_right(high, low, P)
 
 
         else:
