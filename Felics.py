@@ -1,5 +1,21 @@
 import cv2 as cv
 
+def decimale_binario(n):
+
+    b = ""
+    while n>0:
+        if n%2==0:
+            b="0"+b
+        else:
+            b="1"+b
+        n=int(n/2)  #casting in intero
+
+    while len(b)<8:
+        b= "0"+b
+
+    return b
+
+
 path = "Immagini/2.jpg"
 
 img = cv.imread(path)
@@ -32,9 +48,13 @@ cv.destroyAllWindows()
 
 array = cv.cvtColor(img, cv.COLOR_BGR2GRAY) #conversione in scala di grigi
 
-primo = array[0,0]
-secondo = array[0,1]
-print("primo = "+str(primo)+" secondo = "+str(secondo)+"\n\n"+str(array.shape)+"\n\nP  N1  N2  riga  colonna\n")
+uno = array[0,0]
+due = array[0,1]
+
+primo = decimale_binario(uno)
+secondo = decimale_binario(due)
+
+print("primo = "+str(uno)+" "+str(primo)+" secondo = "+str(due)+" "+str(secondo)+"\n\n"+str(array.shape)+"\n\nP  N1  N2  riga  colonna\n")
 
 indice = 0
 for riga in range(0,array.shape[0]):
@@ -60,3 +80,4 @@ for riga in range(0,array.shape[0]):
 
         else:
             indice = indice + 1
+
