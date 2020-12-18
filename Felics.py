@@ -1,20 +1,5 @@
 import cv2 as cv
-
-def decimale_binario(n):
-
-    b = ""
-    while n>0:
-        if n%2==0:
-            b="0"+b
-        else:
-            b="1"+b
-        n=int(n/2)  #casting in intero
-
-    while len(b)<8:
-        b= "0"+b
-
-    return b
-
+import AdjustedBinaryCode as abc
 
 path = "Immagini/2.jpg"
 
@@ -51,8 +36,8 @@ array = cv.cvtColor(img, cv.COLOR_BGR2GRAY) #conversione in scala di grigi
 uno = array[0,0]
 due = array[0,1]
 
-primo = decimale_binario(uno)
-secondo = decimale_binario(due)
+primo = abc.dec_bin(uno, 8)
+secondo = abc.dec_bin(due, 8)
 
 print("primo = "+str(uno)+" "+str(primo)+" secondo = "+str(due)+" "+str(secondo)+"\n\n"+str(array.shape)+"\n\nP  N1  N2  riga  colonna\n")
 

@@ -114,7 +114,7 @@ def adjusted_binary_codeDec(H,L,B):
             else:
                 start = start - 1
 
-
+'''
 H = 24
 L = 17
 P = 18
@@ -124,5 +124,5 @@ print(B)
 print("\nDECODIFICA")
 D = adjusted_binary_codeDec(H,L,B)
 print(D)
-
+'''
 
