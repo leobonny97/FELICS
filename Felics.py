@@ -3,6 +3,7 @@ import AdjustedBinaryCode as abc
 from pixelPosition import left_center_right
 from array import array as arr
 
+bin_array_dim = arr("B")
 bin_array = arr("B")
 
 file = open("test.bnr", "wb")
@@ -11,7 +12,8 @@ path = "Immagini/2.jpg"
 
 img = cv.imread(path)
 
-''' ridimensionamento in percentuale
+''' 
+ridimensionamento in percentuale
 scale_percent = 220 # percent of original size
 width = int(img.shape[1] * scale_percent / 100)
 height = int(img.shape[0] * scale_percent / 100)
@@ -39,13 +41,37 @@ cv.destroyAllWindows()
 
 array = cv.cvtColor(img, cv.COLOR_BGR2GRAY) #conversione in scala di grigi
 
+x, y = array.shape
+print(x)
+print(y)
+
+x_code = abc.dec_bin(x, 16)
+bin_array_dim.append(int(x_code[:8][::+1], 2))
+bin_array_dim.append(int(x_code[8:][::+1], 2))
+
+y_code = abc.dec_bin(y, 16)
+bin_array_dim.append(int(y_code[:8][::+1], 2))
+bin_array_dim.append(int(y_code[8:][::+1], 2))
+
+file.write(bytes(bin_array_dim))
+
+print(x_code)
+print(y_code)
+
+print(bin_array_dim)
+
+
+
 uno = array[0,0]
 due = array[0,1]
+
+
 
 primo = abc.dec_bin(uno, 8)
 bin_array.append(int(str(primo), 2))
 secondo = abc.dec_bin(due, 8)
 bin_array.append(int(str(secondo), 2))
+
 
 print("primo = "+str(uno)+" "+str(primo)+" secondo = "+str(due)+" "+str(secondo)+"\n\n"+str(array.shape)+"\n\nP  N1  N2  riga  colonna\n")
 
