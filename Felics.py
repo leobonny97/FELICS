@@ -7,7 +7,7 @@ bin_array = arr("B")
 
 file = open("test.bnr", "wb")
 
-path = "Immagini/2.jpg"
+path = "Immagini/4.jpg"
 
 img = cv.imread(path)
 
@@ -47,11 +47,6 @@ bin_array.append(int(str(primo), 2))
 secondo = abc.dec_bin(due, 8)
 bin_array.append(int(str(secondo), 2))
 
-
-
-
-
-
 print("primo = "+str(uno)+" "+str(primo)+" secondo = "+str(due)+" "+str(secondo)+"\n\n"+str(array.shape)+"\n\nP  N1  N2  riga  colonna\n")
 
 indice = 0
@@ -80,6 +75,7 @@ for riga in range(0,array.shape[0]):
                 high = N2
                 low = N1
             result += left_center_right(high, low, P)
+            print(result)
         else:
             indice = indice + 1
         while (len(result) > 8):
