@@ -1,6 +1,12 @@
 import cv2 as cv
 import AdjustedBinaryCode as abc
 from pixelPosition import left_center_right
+from array import array as arr
+
+bin_array = arr("B")
+
+file = open("test.bnr", "wb")
+
 path = "Immagini/2.jpg"
 
 img = cv.imread(path)
@@ -37,11 +43,19 @@ uno = array[0,0]
 due = array[0,1]
 
 primo = abc.dec_bin(uno, 8)
+bin_array.append(int(str(primo), 2))
 secondo = abc.dec_bin(due, 8)
+bin_array.append(int(str(secondo), 2))
+
+
+
+
+
 
 print("primo = "+str(uno)+" "+str(primo)+" secondo = "+str(due)+" "+str(secondo)+"\n\n"+str(array.shape)+"\n\nP  N1  N2  riga  colonna\n")
 
 indice = 0
+result = ''
 
 for riga in range(0,array.shape[0]):
     for colonna in range(0, array.shape[1]):
@@ -65,8 +79,24 @@ for riga in range(0,array.shape[0]):
                 high = N2
                 low = N1
             result = left_center_right(high, low, P)
-
-
         else:
             indice = indice + 1
+        while (len(result) > 8):
+            bin_array.append(int(result[:8][::+1], 2))
+            result = result[8:]
 
+
+file.write(bytes(bin_array))
+file.close()
+
+#serve per testare se la compressione viene eseguita correttamente
+with open("test.bnr", "r") as f:
+    while(1):
+        riga = f.read(1)
+        if not riga :
+            print("mammt")
+            break
+        else:
+            print(ord(riga))
+
+f.close()
