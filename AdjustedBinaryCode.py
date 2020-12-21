@@ -80,7 +80,8 @@ def adjusted_binary_codeDec(H,L,B):
     b = 2*(delta + 1 - 2**int(k))
 
     if potenza_di_due == True:
-        num = int(B, base=2)
+        sottostringaB = B[0:k]
+        num = int(sottostringaB, base=2)
         #print(B)
         #print("delta = " + str(delta) + " a = " + str(a) + " b = " + str(b) + " k = " + str(k))
         return num + L
@@ -91,8 +92,9 @@ def adjusted_binary_codeDec(H,L,B):
         for i in range(1,a+1):
             n = 2**k - i
             d = dec_bin(n,k)
+            sottostringaB = B[0:k]
             #print(d)
-            if B == d:
+            if sottostringaB == d:
                 #print("delta = " + str(delta) + " a = " + str(a) + " b = " + str(b) + " k = " + str(k))
                 return start
             else:
@@ -102,8 +104,9 @@ def adjusted_binary_codeDec(H,L,B):
         start = L
         for l in range(0,int(b/2)):
             d = dec_bin(l,k+1)
+            sottostringaB = B[0:k+1]
             #print(d)
-            if B == d:
+            if sottostringaB == d:
                 #print("delta = " + str(delta) + " a = " + str(a) + " b = " + str(b) + " k = " + str(k))
                 return start
             else:
@@ -113,8 +116,9 @@ def adjusted_binary_codeDec(H,L,B):
         start = H
         for t in range(int(b/2), b):
             d = dec_bin(t, k+1)
+            sottostringaB = B[0:k+1]
             #print(d)
-            if B == d:
+            if sottostringaB == d:
                 #print("delta = " + str(delta) + " a = " + str(a) + " b = " + str(b) + " k = " + str(k))
                 return start
             else:
@@ -122,8 +126,8 @@ def adjusted_binary_codeDec(H,L,B):
 
 '''
 H = 24
-L = 24
-P = 24
+L = 15
+P = 20
 print("CODIFICA")
 B = adjusted_binary_codeCod(H,L,P)
 print(B)
