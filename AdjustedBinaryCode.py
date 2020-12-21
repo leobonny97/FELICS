@@ -18,7 +18,10 @@ def dec_bin(n,m):
 def adjusted_binary_codeCod(H,L,P):
 
     delta = H - L
-    k = math.log(delta + 1, 2)
+    if delta==0:            #se H,L,P sono tutti uguali
+        k = math.log(2, 2)
+    else:
+        k = math.log(delta + 1, 2)
     potenza_di_due = k.is_integer()
     k = int(k)
     a = (2**(int(k)+1))-(delta + 1)
@@ -67,7 +70,10 @@ def adjusted_binary_codeCod(H,L,P):
 def adjusted_binary_codeDec(H,L,B):
 
     delta = H - L
-    k = math.log(delta + 1, 2)
+    if delta==0:            #se H,L,P sono tutti uguali
+        k = math.log(2, 2)
+    else:
+        k = math.log(delta + 1, 2)
     potenza_di_due = k.is_integer()
     k = int(k)
     a = (2**(int(k)+1))-(delta + 1)
@@ -114,15 +120,15 @@ def adjusted_binary_codeDec(H,L,B):
             else:
                 start = start - 1
 
-'''
+
 H = 24
-L = 17
-P = 18
+L = 24
+P = 24
 print("CODIFICA")
 B = adjusted_binary_codeCod(H,L,P)
 print(B)
 print("\nDECODIFICA")
 D = adjusted_binary_codeDec(H,L,B)
 print(D)
-'''
+
 
