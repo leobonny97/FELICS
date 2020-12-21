@@ -59,7 +59,7 @@ with open("test.bnr", "rb") as f:
                                     num_bin = abc.dec_bin(ord(carattere), 8)
                                     print(ord(carattere))
                                     print(num_bin)
-                                    code = code + str(num_bin)
+                                    code = code + str(num_bin) #concatenazione delle varie letture
                                     #facciamo qualcosa
 
 f.close()
