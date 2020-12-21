@@ -7,7 +7,7 @@ bin_array = arr("B")
 
 file = open("test.bnr", "wb")
 
-path = "Immagini/1.jpg"
+path = "Immagini/2.jpg"
 
 img = cv.imread(path)
 
@@ -85,14 +85,3 @@ for riga in range(0,array.shape[0]):
 file.write(bytes(bin_array))
 file.close()
 
-#serve per testare se la compressione viene eseguita correttamente
-with open("test.bnr", "r") as f:
-    while(1):
-        riga = f.read(1)
-        if not riga :
-            print("mammt")
-            break
-        else:
-            print(ord(riga))
-
-f.close()
