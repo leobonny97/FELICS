@@ -23,13 +23,21 @@ def left_center_rightDec(h, l, code):
     if code[0] == 1:
         code = code[2:]
         if code[1] == 0:
-            k = Context.Contesto.searchContestiDec(h,l,code)
+            k, aggiornare = Context.Contesto.searchContesti_dec(h, l, code)
             result,code = decompression_golomb_rice(code, k)
-            result = l - result - 1
+            result = l - result - 1 #p<l
+            if aggiornare == True:
+                Context.Contesto.aggiornaContesto_dec(h, l, result) #result = p
+            else: #devo aggiungere il contesto
+                Context.Contesto.addContestoeValori_dec(h, l, result) #result = p
         else:
-            k = Context.Contesto.searchContestiDec(h, l, code)
+            k, aggiornare = Context.Contesto.searchContestiDec(h, l, code)
             result,code = decompression_golomb_rice(code, k)
-            result = result + h + 1
+            result = result + h + 1 #p>h
+            if aggiornare == True:
+                Context.Contesto.aggiornaContesto_dec(h, l, result)  # result = p
+            else:  # devo aggiungere il contesto
+                Context.Contesto.addContestoeValori_dec(h, l, result)  # result = p
     else:   #sei al centro
         code = code[1:]
         result,code = adjusted_binary_codeDec(h, l, code)
