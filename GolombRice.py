@@ -6,10 +6,12 @@ def decompression_golomb_rice(code, k):
     decode1 = c * m
     print('La prima parte del codice equivale a ' + str(decode1))
 
+    code = code[c+1:]
+
     decode2 = 0
     esponente = 0
-    c2=len(code)-1
-    while c2 > c:
+    c2 = k -1
+    while c2 >= 0:
         if code[c2] == '1':
             decode2 = decode2 + 2**esponente
         esponente = esponente + 1
@@ -20,7 +22,10 @@ def decompression_golomb_rice(code, k):
 
     decode = decode1 + decode2
     print("Il valore decompressato equivale a " + str(decode))
-    return decode
+
+    code = code[k:]
+
+    return decode, code
 
 def golomb_rice(n, k):
     m = 2 ** k
