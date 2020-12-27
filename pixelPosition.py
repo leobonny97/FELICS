@@ -1,6 +1,6 @@
-from GolombRice import golomb_rice
+from GolombRice import golomb_rice, decompression_golomb_rice
 import Context
-from AdjustedBinaryCode import adjusted_binary_codeCod
+from AdjustedBinaryCode import adjusted_binary_codeCod, adjusted_binary_codeDec
 
 
 def left_center_right(h, l, p):
@@ -16,6 +16,26 @@ def left_center_right(h, l, p):
     else:   #sei al centro
         result = result + '0' + adjusted_binary_codeCod(h, l, p)
     return result
+
+
+
+def left_center_rightDec(h, l, code):
+    if code[0] == 1:
+        code = code[2:]
+        if code[1] == 0:
+            k = Context.Contesto.searchContestiDec(h,l,code)
+            result,code = decompression_golomb_rice(code, k)
+            result = l - result - 1
+        else:
+            k = Context.Contesto.searchContestiDec(h, l, code)
+            result,code = decompression_golomb_rice(code, k)
+            result = result + h + 1
+    else:   #sei al centro
+        code = code[1:]
+        result,code = adjusted_binary_codeDec(h, l, code)
+    return result,code
+
+
 '''
 p = 180
 l = 120

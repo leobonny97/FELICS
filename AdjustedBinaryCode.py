@@ -82,9 +82,10 @@ def adjusted_binary_codeDec(H,L,B):
     if potenza_di_due == True:
         sottostringaB = B[0:k]
         num = int(sottostringaB, base=2)
+        B = B[k+1:]
         #print(B)
         #print("delta = " + str(delta) + " a = " + str(a) + " b = " + str(b) + " k = " + str(k))
-        return num + L
+        return num + L, B
     else:
 
         '''se stiamo al centro'''
@@ -96,7 +97,8 @@ def adjusted_binary_codeDec(H,L,B):
             #print(d)
             if sottostringaB == d:
                 #print("delta = " + str(delta) + " a = " + str(a) + " b = " + str(b) + " k = " + str(k))
-                return start
+                B = B[k + 1:]
+                return start,B
             else:
                 start = start - 1
 
@@ -108,7 +110,8 @@ def adjusted_binary_codeDec(H,L,B):
             #print(d)
             if sottostringaB == d:
                 #print("delta = " + str(delta) + " a = " + str(a) + " b = " + str(b) + " k = " + str(k))
-                return start
+                B = B[k + 2:]
+                return start,B
             else:
                 start = start + 1
 
@@ -120,7 +123,8 @@ def adjusted_binary_codeDec(H,L,B):
             #print(d)
             if sottostringaB == d:
                 #print("delta = " + str(delta) + " a = " + str(a) + " b = " + str(b) + " k = " + str(k))
-                return start
+                B = B[k + 2:]
+                return start,B
             else:
                 start = start - 1
 

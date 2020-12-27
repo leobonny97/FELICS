@@ -1,16 +1,16 @@
-def decompression_golomb_rice(nbin, k):
+def decompression_golomb_rice(code, k):
     m = 2 ** k
     c = 0
-    while nbin[c] =='1':
+    while code[c] =='1':
         c = c +1
     decode1 = c * m
     print('La prima parte del codice equivale a ' + str(decode1))
 
     decode2 = 0
     esponente = 0
-    c2=len(nbin)-1
+    c2=len(code)-1
     while c2 > c:
-        if nbin[c2] == '1':
+        if code[c2] == '1':
             decode2 = decode2 + 2**esponente
         esponente = esponente + 1
         c2 = c2 - 1
