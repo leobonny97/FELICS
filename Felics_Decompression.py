@@ -66,6 +66,7 @@ with open("test.bnr", "rb") as f:
                                     code = code + str(num_bin) #concatenazione delle varie letture
 f.close()
 
+print(code[:40])
 
 indice = 0
 
@@ -95,7 +96,13 @@ for riga in range(0,x):
             result,code = left_center_rightDec(high,low,code)
             array_immagine[riga,colonna] = result
 
+
+
+
             print(result)
+
+            print(code[:40])
+
         else:
             indice = indice + 1
 
