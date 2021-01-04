@@ -24,7 +24,7 @@ def left_center_rightDec(h, l, code):
             #print(code)
             code = code[2:]
             k,aggiornare = Context.searchContesti_dec(h,l,code)
-            print("k = "+str(k))
+            #print("k = "+str(k))
             result,code = decompression_golomb_rice(code, k)
             result = l - result - 1 #p<l
             if aggiornare == True:
@@ -36,7 +36,7 @@ def left_center_rightDec(h, l, code):
             #print(code)
             code = code[2:]
             k,aggiornare = Context.searchContesti_dec(h, l, code)
-            print("k = " + str(k))
+            #print("k = " + str(k))
             result,code = decompression_golomb_rice(code, k)
             result = result + h + 1 #p>h
             if aggiornare == True:

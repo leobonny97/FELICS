@@ -113,4 +113,4 @@ def addContestoeValori_dec( high, low, p):
             arr_valori_dec.append(len(GolombRice.golomb_rice(p - high - 1, k)))
     arr_contesti_dec.append([delta])
     arr_contesti_dec.append(arr_valori_dec)
-    print("array"+str(arr_valori_dec))
+    #print("array"+str(arr_valori_dec))

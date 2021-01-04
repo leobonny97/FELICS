@@ -84,22 +84,23 @@ def adjusted_binary_codeDec(H,L,B):
     if potenza_di_due == True:
         sottostringaB = B[0:k]
         num = int(sottostringaB, base=2)
-        B = B[k+1:]
+        B = B[k:]
         #print(B)
-        print("delta = " + str(delta) + " a = " + str(a) + " b = " + str(b) + " k = " + str(k) + " potenzadidue = " + str(potenza_di_due))
+        #print("delta = " + str(delta) + " a = " + str(a) + " b = " + str(b) + " k = " + str(k) + " potenzadidue = " + str(potenza_di_due))
         return num + L, B
     else:
 
         '''se stiamo al centro'''
         start = H - int(b/2)
         for i in range(1,a+1):
+            #print("sono al centro")
             n = 2**k - i
             d = dec_bin(n,k)
             sottostringaB = B[0:k]
             #print(d)
             if sottostringaB == d:
                 #print("delta = " + str(delta) + " a = " + str(a) + " b = " + str(b) + " k = " + str(k) + " potenzadidue = " + str(potenza_di_due))
-                B = B[k + 1:]
+                B = B[k:]
                 return start,B
             else:
                 start = start - 1
@@ -107,12 +108,13 @@ def adjusted_binary_codeDec(H,L,B):
         '''se stiamo sopra'''
         start = L
         for l in range(0,int(b/2)):
+            #print("sono sopra")
             d = dec_bin(l,k+1)
             sottostringaB = B[0:k+1]
             #print(d)
             if sottostringaB == d:
                 #print("delta = " + str(delta) + " a = " + str(a) + " b = " + str(b) + " k = " + str(k) + " potenzadidue = " + str(potenza_di_due))
-                B = B[k + 2:]
+                B = B[k + 1:]
                 return start,B
             else:
                 start = start + 1
@@ -120,20 +122,20 @@ def adjusted_binary_codeDec(H,L,B):
         '''se stiamo sotto'''
         start = H
         for t in range(int(b/2), b):
+            #print("sono sotto")
             d = dec_bin(t, k+1)
             sottostringaB = B[0:k+1]
             #print(d)
             if sottostringaB == d:
                 #print("delta = " + str(delta) + " a = " + str(a) + " b = " + str(b) + " k = " + str(k) + " potenzadidue = " + str(potenza_di_due))
-                B = B[k + 2:]
+                B = B[k + 1:]
                 return start,B
             else:
                 start = start - 1
-
 '''
-H = 24
-L = 15
-P = 20
+H = 15
+L = 7
+P = 7
 print("CODIFICA")
 B = adjusted_binary_codeCod(H,L,P)
 print(B)
