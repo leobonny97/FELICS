@@ -78,13 +78,15 @@ def adjusted_binary_codeDec(H,L,B):
     k = int(k)
     a = (2**(int(k)+1))-(delta + 1)
     b = 2*(delta + 1 - 2**int(k))
+    a = int(a)
+    b = int(b)
 
     if potenza_di_due == True:
         sottostringaB = B[0:k]
         num = int(sottostringaB, base=2)
         B = B[k+1:]
         #print(B)
-        #print("delta = " + str(delta) + " a = " + str(a) + " b = " + str(b) + " k = " + str(k))
+        print("delta = " + str(delta) + " a = " + str(a) + " b = " + str(b) + " k = " + str(k) + " potenzadidue = " + str(potenza_di_due))
         return num + L, B
     else:
 
@@ -96,7 +98,7 @@ def adjusted_binary_codeDec(H,L,B):
             sottostringaB = B[0:k]
             #print(d)
             if sottostringaB == d:
-                #print("delta = " + str(delta) + " a = " + str(a) + " b = " + str(b) + " k = " + str(k))
+                #print("delta = " + str(delta) + " a = " + str(a) + " b = " + str(b) + " k = " + str(k) + " potenzadidue = " + str(potenza_di_due))
                 B = B[k + 1:]
                 return start,B
             else:
@@ -109,7 +111,7 @@ def adjusted_binary_codeDec(H,L,B):
             sottostringaB = B[0:k+1]
             #print(d)
             if sottostringaB == d:
-                #print("delta = " + str(delta) + " a = " + str(a) + " b = " + str(b) + " k = " + str(k))
+                #print("delta = " + str(delta) + " a = " + str(a) + " b = " + str(b) + " k = " + str(k) + " potenzadidue = " + str(potenza_di_due))
                 B = B[k + 2:]
                 return start,B
             else:
@@ -122,7 +124,7 @@ def adjusted_binary_codeDec(H,L,B):
             sottostringaB = B[0:k+1]
             #print(d)
             if sottostringaB == d:
-                #print("delta = " + str(delta) + " a = " + str(a) + " b = " + str(b) + " k = " + str(k))
+                #print("delta = " + str(delta) + " a = " + str(a) + " b = " + str(b) + " k = " + str(k) + " potenzadidue = " + str(potenza_di_due))
                 B = B[k + 2:]
                 return start,B
             else:

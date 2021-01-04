@@ -89,7 +89,10 @@ for riga in range(0,x):
                 high = N2
                 low = N1
 
-            result,code = left_center_rightDec(high, low, code)
+            print("high = "+str(high))
+            print("low = "+str(low))
+            #result,code = left_center_rightDec(high, low, code)
+            result,code = left_center_rightDec(high,low,code)
             array_immagine[riga,colonna] = result
 
             print(result)
