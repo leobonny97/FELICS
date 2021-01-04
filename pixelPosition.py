@@ -6,12 +6,10 @@ from AdjustedBinaryCode import adjusted_binary_codeCod, adjusted_binary_codeDec
 def left_center_right(h, l, p):
     result = ""
     if p < l:
-        contesto = Context.Contesto(h, l, p)
-        k = contesto.searchContesti(h, l, p)
+        k = Context.searchContesti(h, l, p)
         result = result + '10' + golomb_rice(l-p-1, k)
     elif p > h:
-        contesto = Context.Contesto(h, l, p)
-        k = contesto.searchContesti(h, l, p)
+        k = Context.searchContesti(h, l, p)
         result = result + '11' + golomb_rice(p-h-1, k)
     else:   #sei al centro
         result = result + '0' + adjusted_binary_codeCod(h, l, p)
@@ -20,25 +18,34 @@ def left_center_right(h, l, p):
 
 
 def left_center_rightDec(h, l, code):
-    if code[0] == 1:
-        code = code[2:]
-        if code[1] == 0:
-            k, aggiornare = Context.Contesto.searchContesti_dec(h, l, code)
+    if code[0] == '1':
+        if code[1] == '0':
+            print("sono in 10")
+            #print(code)
+            code = code[2:]
+            k,aggiornare = Context.searchContesti_dec(h,l,code)
+            print("k = "+str(k))
             result,code = decompression_golomb_rice(code, k)
             result = l - result - 1 #p<l
             if aggiornare == True:
-                Context.Contesto.aggiornaContesto_dec(h, l, result) #result = p
+                Context.aggiornaContesto_dec(h, l, result) #result = p
             else: #devo aggiungere il contesto
-                Context.Contesto.addContestoeValori_dec(h, l, result) #result = p
+                Context.addContestoeValori_dec(h, l, result) #result = p
         else:
-            k, aggiornare = Context.Contesto.searchContestiDec(h, l, code)
+            print("sono in 11")
+            #print(code)
+            code = code[2:]
+            k,aggiornare = Context.searchContesti_dec(h, l, code)
+            print("k = " + str(k))
             result,code = decompression_golomb_rice(code, k)
             result = result + h + 1 #p>h
             if aggiornare == True:
-                Context.Contesto.aggiornaContesto_dec(h, l, result)  # result = p
+                Context.aggiornaContesto_dec(h, l, result)  # result = p
             else:  # devo aggiungere il contesto
-                Context.Contesto.addContestoeValori_dec(h, l, result)  # result = p
-    else:   #sei al centro
+                Context.addContestoeValori_dec(h, l, result)  # result = p
+    elif code[0] == '0':   #sei al centro
+        print("sono in 0")
+        #print(code)
         code = code[1:]
         result,code = adjusted_binary_codeDec(h, l, code)
     return result,code
