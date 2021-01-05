@@ -61,15 +61,15 @@ with open("test.bnr", "rb") as f:
                                     break
                                 else:
                                     num_bin = abc.dec_bin(ord(carattere), 8)
-                                    #print(ord(carattere))
-                                    #print(num_bin)
+                                    print(ord(carattere))
+                                    print(num_bin)
                                     code = code + str(num_bin) #concatenazione delle varie letture
 f.close()
 
-print(code[:40])
 
 indice = 0
-
+print(x)
+print(y)
 for riga in range(0,x):
     for colonna in range(0,y):
         if (indice > 1):
@@ -82,27 +82,21 @@ for riga in range(0,x):
             if (riga!=0 and colonna!=0):
                 N1 = array_immagine[riga - 1,colonna]   # sopra
                 N2 = array_immagine[riga,colonna - 1]   # sinistra
-            # print(str(P)+" "+str(N1)+" "+str(N2)+"   "+str(riga)+"   "+str(colonna))
+            #print(str(P)+" "+str(N1)+" "+str(N2)+"   "+str(riga)+"   "+str(colonna))
             if N1 >= N2:        #se sono uguali chi è high è indifferente
                 high = N1
                 low = N2
+                #print("H= " + str(high) + " L= " + str(low)+" IL CONTESTO E: "+str(high-low))
             else:
                 high = N2
                 low = N1
+                #print("H= " + str(high) + " L= " + str(low)+" IL CONTESTO E: "+str(high-low))
 
-            print("high = "+str(high))
-            print("low = "+str(low))
-            #result,code = left_center_rightDec(high, low, code)
+            #print("high = "+str(high))
+            #print("low = "+str(low))
             result,code = left_center_rightDec(high,low,code)
             array_immagine[riga,colonna] = result
-
-
-
-
-            print(result)
-
-            print(code[:40])
-
+            #print(result)
         else:
             indice = indice + 1
 
