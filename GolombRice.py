@@ -4,7 +4,7 @@ def decompression_golomb_rice(code, k):
     while code[c] =='1':
         c = c +1
     decode1 = c * m
-    print('La prima parte del codice equivale a ' + str(decode1))
+    #print('La prima parte del codice equivale a ' + str(decode1))
 
     code = code[c+1:]
 
@@ -18,10 +18,10 @@ def decompression_golomb_rice(code, k):
         c2 = c2 - 1
 
 
-    print('La seconda parte del codice equivale a ' + str(decode2))
+    #print('La seconda parte del codice equivale a ' + str(decode2))
 
     decode = decode1 + decode2
-    print("Il valore decompressato equivale a " + str(decode))
+    #print("Il valore decompressato equivale a " + str(decode))
 
     code = code[k:]
 

@@ -61,8 +61,8 @@ with open("test.bnr", "rb") as f:
                                     break
                                 else:
                                     num_bin = abc.dec_bin(ord(carattere), 8)
-                                    print(ord(carattere))
-                                    print(num_bin)
+                                    #print(ord(carattere))
+                                    #print(num_bin)
                                     code = code + str(num_bin) #concatenazione delle varie letture
 f.close()
 
@@ -96,7 +96,7 @@ for riga in range(0,x):
             #print("low = "+str(low))
             result,code = left_center_rightDec(high,low,code)
             array_immagine[riga,colonna] = result
-            #print(result)
+            print(result)
         else:
             indice = indice + 1
 

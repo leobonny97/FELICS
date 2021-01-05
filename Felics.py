@@ -92,7 +92,7 @@ for riga in range(0,array.shape[0]):
             if (riga!=0 and colonna!=0):
                 N1 = array[riga - 1, colonna]  # sopra
                 N2 = array[riga, colonna - 1]  # sinistra
-            #print(str(P)+" "+str(N1)+" "+str(N2)+"   "+str(riga)+"   "+str(colonna))
+            print(str(P)+" "+str(N1)+" "+str(N2)+"   "+str(riga)+"   "+str(colonna))
             #PARTE CENTRALE
             if N1 >= N2:        #se sono uguali chi è high è indifferente
                 high = N1
@@ -107,6 +107,12 @@ for riga in range(0,array.shape[0]):
         while (len(result) > 8):
             bin_array.append(int(result[:8][::+1], 2))
             result = result[8:]
+
+if len(result) > 0:
+    while (len(result) == 8):
+        result = result + '0'
+
+bin_array.append(int(result[:8][::+1], 2))
 
 file.write(bytes(bin_array))
 file.close()
