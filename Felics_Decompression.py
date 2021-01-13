@@ -2,6 +2,7 @@ import AdjustedBinaryCode as abc
 import numpy as np
 from pixelPosition import left_center_rightDec
 import matplotlib.pyplot as plt
+from PIL import Image
 
 code = ''
 x = 0
@@ -100,6 +101,10 @@ for riga in range(0,x):
         else:
             indice = indice + 1
 
-plt.imshow(array_immagine)
-plt.savefig("Immagini\\prova.jpg")
-
+plt.imshow(array_immagine, cmap="gray", interpolation="none")
+plt.savefig("Immagini\\image.jpg")
+'''
+im = Image.open("Immagini\\image.jpg")
+im = im.convert("L")
+im.save("Immagini\\image_grey.jpg")
+'''
