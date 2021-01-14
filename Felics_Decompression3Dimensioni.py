@@ -61,7 +61,7 @@ with open("test.bnr", "rb") as f:
                                         if not secondo3:
                                             print("File terminato")
                                         else:  # arrivati a questo punto abbiamo letto il valore dei primi due pixel
-                                            array_immagine = np.zeros((x, y), dtype=[('0', 'int'), ('1', 'int'), ('2', 'int')])
+                                            array_immagine = np.zeros((x, y, 3), dtype=int)
                                             #num_bin = abc.dec_bin(ord(primo1), 8)
                                             array_immagine[0][0] = (ord(primo1), ord(primo2), ord(primo3))
                                             # print(ord(primo1))
