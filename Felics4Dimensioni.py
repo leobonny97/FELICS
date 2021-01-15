@@ -8,11 +8,13 @@ bin_array = arr("B")
 
 file = open("test.bnr", "wb")
 
-path = "Immagini/1.jpg"
+path = "Immagini/2.jpg"
 
-array = cv.imread(path, cv.IMREAD_)
+img = cv.imread(path, 1)
 
-'''
+array = cv.cvtColor(img, cv.COLOR_BGR2RGBA) #conversione in RGBA
+
+
 
 x, y, z = array.shape
 print(x)
@@ -31,12 +33,12 @@ file.write(bytes(bin_array_dim))
 print(x_code)
 print(y_code)
 
-print(bin_array_dim)
+#print(bin_array_dim)
 
 
 
-uno1, uno2, uno3 = array[0,0]
-due1, due2, due3 = array[0,1]
+uno1, uno2, uno3, uno4 = array[0,0]
+due1, due2, due3, due4 = array[0,1]
 
 
 
@@ -46,12 +48,16 @@ primo2 = abc.dec_bin(uno2, 8)
 bin_array.append(int(str(primo2), 2))
 primo3 = abc.dec_bin(uno3, 8)
 bin_array.append(int(str(primo3), 2))
+primo4 = abc.dec_bin(uno4, 8)
+bin_array.append(int(str(primo4), 2))
 secondo1 = abc.dec_bin(due1, 8)
 bin_array.append(int(str(secondo1), 2))
 secondo2 = abc.dec_bin(due2, 8)
 bin_array.append(int(str(secondo2), 2))
 secondo3 = abc.dec_bin(due3, 8)
 bin_array.append(int(str(secondo3), 2))
+secondo4 = abc.dec_bin(due4, 8)
+bin_array.append(int(str(secondo4), 2))
 
 
 #print(str(array.shape)+"\n\nP  N1  N2  riga  colonna\n")
@@ -63,7 +69,7 @@ contatore = 0
 for riga in range(0,array.shape[0]):
     for colonna in range(0, array.shape[1]):
         if (indice > 1):
-            for count_comp in range(0, 3):
+            for count_comp in range(0, 4):
                 P = array[riga, colonna][count_comp]
                 if (riga==0): #se siamo nella riga 0
                     N1 = array[riga,colonna-1][count_comp] #primo a sinistra
@@ -98,4 +104,3 @@ bin_array.append(int(result[:8][::+1], 2))
 
 file.write(bytes(bin_array))
 file.close()
-'''
