@@ -2,25 +2,7 @@ import cv2 as cv
 import AdjustedBinaryCode as abc
 from pixelPosition import left_center_right
 from array import array as arr
-import threading
-
-threadLock = threading.Lock()
-class FelicsThread (threading.Thread):
-   def __init__(self, high, low, P):
-      threading.Thread.__init__(self)
-      self.high = high
-      self.low = low
-      self.P = P
-   def run(self):
-      # Acquisizione del lock
-      threadLock.acquire()
-
-      return left_center_right(high, low, P)
-
-
-      # Rilascio del lock
-      threadLock.release()
-
+from threading import Thread
 
 
 bin_array_dim = arr("B")
@@ -108,14 +90,14 @@ for riga in range(0,array.shape[0]):
                 else:
                     high = N2
                     low = N1
+
+                thread = Thread(target=left_center_right, args=(high, low, P))
+                thread.start()
+                return_value = thread.join()
                 result += left_center_right(high, low, P)
                 #print(result)
         else:
             indice = indice + 1
-
-        #sleep
-
-        #result +=
         while (len(result) > 8):
             bin_array.append(int(result[:8][::+1], 2))
             result = result[8:]
