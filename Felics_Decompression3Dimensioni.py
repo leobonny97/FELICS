@@ -1,3 +1,5 @@
+import cv2
+
 import AdjustedBinaryCode as abc
 import numpy as np
 from pixelPosition import left_center_rightDec
@@ -126,6 +128,5 @@ for riga in range(0,x):
                     array_immagine[riga, colonna] = (result0, result1, result2)
         else:
             indice = indice + 1
-
 plt.imshow(array_immagine)
 plt.savefig("Immagini\\prova.jpg")

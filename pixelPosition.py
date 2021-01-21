@@ -6,21 +6,19 @@ from AdjustedBinaryCode import adjusted_binary_codeCod, adjusted_binary_codeDec
 def left_center_right(h, l, p):
     result = ""
     if p < l:
-        k,aggiornare = Context.searchContesti(h, l)
-        #print("H = "+str(h)+" L= "+str(l)+" P= "+str(p)+" contesto: "+str(h-l))
-        #print("K = "+str(k))
+        k, aggiornare, pos = Context.searchContesti(h, l)
         result = result + '10' + golomb_rice(l-p-1, k)
         if aggiornare == True:
-            Context.aggiornaContesto(h, l, p)  # result = p
+            if pos != -1:
+                Context.aggiornaContesto(h, l, p, pos)  # result = p
         else:  # devo aggiungere il contesto
             Context.addContestoeValori(h, l, p)  # result = p
     elif p > h:
-        k, aggiornare= Context.searchContesti(h, l)
-        #print("H = "+str(h)+" L= "+str(l)+" P= "+str(p)+" contesto: "+str(h-l))
-        #print("K = " + str(k))
+        k, aggiornare, pos= Context.searchContesti(h, l)
         result = result + '11' + golomb_rice(p-h-1, k)
         if aggiornare == True:
-            Context.aggiornaContesto(h, l, p)  # result = p
+            if pos != -1:
+                Context.aggiornaContesto(h, l, p, pos)  # result = p
         else:  # devo aggiungere il contesto
             Context.addContestoeValori(h, l, p)  # result = p
     else:   #sei al centro
@@ -36,26 +34,28 @@ def left_center_rightDec(h, l, code):
             #print("sono in 10")
             #print(code)
             code = code[2:]
-            k,aggiornare = Context.searchContesti_dec(h,l)
-            result,code = decompression_golomb_rice(code, k)
+            k, aggiornare, pos = Context.searchContesti_dec(h,l)
+            result, code = decompression_golomb_rice(code, k)
             result = l - result - 1 #p<l
             #print("H = " + str(h) + " L= " + str(l) + " P= " + str(result) + " contesto: "+str(h-l))
             #print("K = " + str(k))
             if aggiornare == True:
-                Context.aggiornaContesto_dec(h, l, result) #result = p
+                if pos != -1:
+                    Context.aggiornaContesto_dec(h, l, result,pos) #result = p
             else: #devo aggiungere il contesto
                 Context.addContestoeValori_dec(h, l, result) #result = p
         else:
             #print("sono in 11")
             #print(code)
             code = code[2:]
-            k,aggiornare = Context.searchContesti_dec(h, l)
+            k, aggiornare, pos = Context.searchContesti_dec(h, l)
             result,code = decompression_golomb_rice(code, k)
             result = result + h + 1 #p>h
             #print("H = " + str(h) + " L= " + str(l) + " P= " + str(result) + " contesto: "+str(h-l))
             #print("K = " + str(k))
             if aggiornare == True:
-                Context.aggiornaContesto_dec(h, l, result)  # result = p
+                if pos != -1:
+                    Context.aggiornaContesto_dec(h, l, result,pos)  # result = p
             else:  # devo aggiungere il contesto
                 Context.addContestoeValori_dec(h, l, result)  # result = p
     elif code[0] == '0':   #sei al centro
