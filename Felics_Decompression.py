@@ -97,14 +97,10 @@ for riga in range(0,x):
             #print("low = "+str(low))
             result,code = left_center_rightDec(high,low,code)
             array_immagine[riga,colonna] = result
-            print(result)
+            #print(result)
         else:
             indice = indice + 1
 
-plt.imshow(array_immagine, cmap="gray", interpolation="none")
-plt.savefig("Immagini\\image.jpg")
-'''
-im = Image.open("Immagini\\image.jpg")
-im = im.convert("L")
-im.save("Immagini\\image_grey.jpg")
-'''
+#plt.imshow(array_immagine, cmap='gray', interpolation='none')
+plt.imsave(fname='Immagini\\1_dec.tiff', arr=array_immagine,vmin=0,vmax=255, cmap='gray', format='tiff')
+#plt.savefig("Immagini\\1dec.tiff")

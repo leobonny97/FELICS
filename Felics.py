@@ -8,36 +8,9 @@ bin_array = arr("B")
 
 file = open("test.bnr", "wb")
 
-path = "Immagini/1.jpg"
+path = "Immagini/1.tiff"
 
 img = cv.imread(path)
-
-''' 
-ridimensionamento in percentuale
-scale_percent = 220 # percent of original size
-width = int(img.shape[1] * scale_percent / 100)
-height = int(img.shape[0] * scale_percent / 100)
-
-dim = (width, height)
-resized = cv.resize(img, dim, interpolation = cv.INTER_AREA)
-print(resized.shape)
-
-cv.imshow("Original image", img)
-cv.imshow("Resized image", resized)
-cv.waitKey(0)
-cv.destroyAllWindows()
-'''
-
-''' ridimensionamento statico
-dim = (200, 200)
-resized = cv.resize(img, dim, interpolation = cv.INTER_AREA)
-print(resized.shape)
-
-cv.imshow("Original image", img)
-cv.imshow("Resized image", resized)
-cv.waitKey(0)
-cv.destroyAllWindows()
-'''
 
 array = cv.cvtColor(img, cv.COLOR_BGR2GRAY) #conversione in scala di grigi
 
@@ -73,7 +46,7 @@ secondo = abc.dec_bin(due, 8)
 bin_array.append(int(str(secondo), 2))
 
 
-print("primo = "+str(uno)+" "+str(primo)+" secondo = "+str(due)+" "+str(secondo)+"\n\n"+str(array.shape)+"\n\nP  N1  N2  riga  colonna\n")
+#print("primo = "+str(uno)+" "+str(primo)+" secondo = "+str(due)+" "+str(secondo)+"\n\n"+str(array.shape)+"\n\nP  N1  N2  riga  colonna\n")
 
 indice = 0
 result = ''
@@ -92,7 +65,7 @@ for riga in range(0,array.shape[0]):
             if (riga!=0 and colonna!=0):
                 N1 = array[riga - 1, colonna]  # sopra
                 N2 = array[riga, colonna - 1]  # sinistra
-            print(str(P)+" "+str(N1)+" "+str(N2)+"   "+str(riga)+"   "+str(colonna))
+            #print(str(P)+" "+str(N1)+" "+str(N2)+"   "+str(riga)+"   "+str(colonna))
             #PARTE CENTRALE
             if N1 >= N2:        #se sono uguali chi è high è indifferente
                 high = N1
