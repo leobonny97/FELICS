@@ -28,16 +28,16 @@ def decompression_golomb_rice(code, k):
     return decode, code
 
 def golomb_rice(n, k):
+    #calcoliamo m
     m = 2 ** k
     #print("Il valore m equivale a: ")
     #print(m)
 
+    #calcoliamo la prima parte del codice
     ris = int(n / m)
     #print("Il valore di n/m equivale a: ")
     #print(ris)
-
     code1 = ''
-
     while ris > 0:
         code1 = code1 + '1'
         ris = ris - 1
@@ -45,10 +45,10 @@ def golomb_rice(n, k):
     #print("Il valore in unario corrisponde a: ")
     #print(code1)
 
+    #calcoliamo la seconda parte del codice
     mod = n % m
     #print("Il resto di n/m equivale a: ")
     #print(mod)
-
     code2 = ''
     while mod > 0:
         if mod % 2 == 0:
@@ -57,12 +57,12 @@ def golomb_rice(n, k):
             code2 = '1' + code2
         mod = int(mod / 2)
 
+    #facciamo in modo che la seconda parte del codice sia di lunghezza k
     while len(code2) < k:
         code2 = '0' + code2
-
-
     #print("Il resto in binario corrisponde a: ")
     #print(code2)
 
+    #concateniamo le due parti e restituiamo la codifica completa
     code1 = code1 + code2
     return code1
