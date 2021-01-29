@@ -8,11 +8,9 @@ bin_array = arr("B")
 
 file = open("test.bnr", "wb")
 
-path = "Immagini/1.jpg"
+path = "Immagini/a colori/1.bmp"
 
 array = cv.imread(path, 1)
-
-
 
 x, y, z = array.shape
 print(x)

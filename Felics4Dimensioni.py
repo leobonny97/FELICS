@@ -8,13 +8,11 @@ bin_array = arr("B")
 
 file = open("test.bnr", "wb")
 
-path = "Immagini/2.jpg"
+path = "Immagini/a colori/1.bmp"
 
 img = cv.imread(path, 1)
 
 array = cv.cvtColor(img, cv.COLOR_BGR2RGBA) #conversione in RGBA
-
-
 
 x, y, z = array.shape
 print(x)
