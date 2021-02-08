@@ -10,10 +10,7 @@ def FelicsProva2(i):
 
     file = open("Test/a colori/test" + str(i) + ".bnr", "wb")
 
-    if (i<=10):
-        path = "Immagini/a colori/" + str(i) + ".bmp"
-    else:
-        path = "Immagini/a colori/" + str(i) + ".tiff"
+    path = "Immagini/a colori/BMP/" + str(i) + ".bmp"
 
     array = cv.imread(path, 1)
 
@@ -98,7 +95,8 @@ def FelicsProva2(i):
     file.close()
 
 
-for i in range(1,20):
+for i in range(1,21):
+    print(i)
     FelicsProva2(i)
 
 

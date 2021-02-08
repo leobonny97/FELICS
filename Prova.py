@@ -10,7 +10,7 @@ def FelicsProva(i):
 
     file = open("Test/Bianco e nero/test" + str(i) + ".bnr", "wb")
 
-    path = "Immagini/Bianco e nero/" + str(i) + ".tiff"
+    path = "Immagini/Bianco e nero/BMP/"+str(i)+".bmp"
 
     img = cv.imread(path)
 
@@ -89,4 +89,5 @@ def FelicsProva(i):
 
 
 for i in range(1,35):
+    print(i)
     FelicsProva(i)
