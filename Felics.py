@@ -6,9 +6,9 @@ from array import array as arr
 bin_array_dim = arr("B")
 bin_array = arr("B")
 
-file = open("test.bnr", "wb")
+file = open("Test/Bianco e nero/test1.bnr", "wb")
 
-path = "Immagini/1.tiff"
+path = "Immagini/Bianco e nero/1.tiff"
 
 img = cv.imread(path)
 
