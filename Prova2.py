@@ -4,19 +4,20 @@ from pixelPosition import left_center_right
 from array import array as arr
 
 
-def FelicsProva(i):
+def FelicsProva2(i):
     bin_array_dim = arr("B")
     bin_array = arr("B")
 
     file = open("Test/a colori/test" + str(i) + ".bnr", "wb")
 
-    path = "Immagini/a colori/" + str(i) + ".tiff"
+    if (i<=10):
+        path = "Immagini/a colori/" + str(i) + ".bmp"
+    else:
+        path = "Immagini/a colori/" + str(i) + ".tiff"
 
-    img = cv.imread(path)
+    array = cv.imread(path, 1)
 
-    array = cv.cvtColor(img, cv.COLOR_BGR2GRAY)  # conversione in scala di grigi
-
-    x, y = array.shape
+    x, y, z = array.shape
     print(x)
     print(y)
 
@@ -35,15 +36,23 @@ def FelicsProva(i):
 
     print(bin_array_dim)
 
-    uno = array[0, 0]
-    due = array[0, 1]
+    uno1, uno2, uno3 = array[0, 0]
+    due1, due2, due3 = array[0, 1]
 
-    primo = abc.dec_bin(uno, 8)
-    bin_array.append(int(str(primo), 2))
-    secondo = abc.dec_bin(due, 8)
-    bin_array.append(int(str(secondo), 2))
+    primo1 = abc.dec_bin(uno1, 8)
+    bin_array.append(int(str(primo1), 2))
+    primo2 = abc.dec_bin(uno2, 8)
+    bin_array.append(int(str(primo2), 2))
+    primo3 = abc.dec_bin(uno3, 8)
+    bin_array.append(int(str(primo3), 2))
+    secondo1 = abc.dec_bin(due1, 8)
+    bin_array.append(int(str(secondo1), 2))
+    secondo2 = abc.dec_bin(due2, 8)
+    bin_array.append(int(str(secondo2), 2))
+    secondo3 = abc.dec_bin(due3, 8)
+    bin_array.append(int(str(secondo3), 2))
 
-    # print("primo = "+str(uno)+" "+str(primo)+" secondo = "+str(due)+" "+str(secondo)+"\n\n"+str(array.shape)+"\n\nP  N1  N2  riga  colonna\n")
+    # print(str(array.shape)+"\n\nP  N1  N2  riga  colonna\n")
 
     indice = 0
     result = ''
@@ -52,26 +61,27 @@ def FelicsProva(i):
     for riga in range(0, array.shape[0]):
         for colonna in range(0, array.shape[1]):
             if (indice > 1):
-                P = array[riga, colonna]
-                if (riga == 0):  # se siamo nella riga 0
-                    N1 = array[riga, colonna - 1]  # primo a sinistra
-                    N2 = array[riga, colonna - 2]  # secondo a sinistra
-                if (colonna == 0):  # se siamo nella colonna 0
-                    N1 = array[riga - 1, colonna]  # sopra
-                    N2 = array[riga - 1, colonna + 1]  # sopra a destra
-                if (riga != 0 and colonna != 0):
-                    N1 = array[riga - 1, colonna]  # sopra
-                    N2 = array[riga, colonna - 1]  # sinistra
-                # print(str(P)+" "+str(N1)+" "+str(N2)+"   "+str(riga)+"   "+str(colonna))
-                # PARTE CENTRALE
-                if N1 >= N2:  # se sono uguali chi è high è indifferente
-                    high = N1
-                    low = N2
-                else:
-                    high = N2
-                    low = N1
-                result += left_center_right(high, low, P)
-                # print(result)
+                for count_comp in range(0, 3):
+                    P = array[riga, colonna][count_comp]
+                    if (riga == 0):  # se siamo nella riga 0
+                        N1 = array[riga, colonna - 1][count_comp]  # primo a sinistra
+                        N2 = array[riga, colonna - 2][count_comp]  # secondo a sinistra
+                    if (colonna == 0):  # se siamo nella colonna 0
+                        N1 = array[riga - 1, colonna][count_comp]  # sopra
+                        N2 = array[riga - 1, colonna + 1][count_comp]  # sopra a destra
+                    if (riga != 0 and colonna != 0):
+                        N1 = array[riga - 1, colonna][count_comp]  # sopra
+                        N2 = array[riga, colonna - 1][count_comp]  # sinistra
+                    # print(str(P)+" "+str(N1)+" "+str(N2)+"   "+str(riga)+"   "+str(colonna))
+                    # PARTE CENTRALE
+                    if N1 >= N2:  # se sono uguali chi è high è indifferente
+                        high = N1
+                        low = N2
+                    else:
+                        high = N2
+                        low = N1
+                    result += left_center_right(high, low, P)
+                    # print(result)
             else:
                 indice = indice + 1
             while (len(result) > 8):
@@ -88,7 +98,7 @@ def FelicsProva(i):
     file.close()
 
 
-for i in range(11,60):
-    FelicsProva(i)
+for i in range(1,20):
+    FelicsProva2(i)
 
 

@@ -88,7 +88,5 @@ def FelicsProva(i):
     file.close()
 
 
-for i in range(1,94):
+for i in range(1,35):
     FelicsProva(i)
-
-
