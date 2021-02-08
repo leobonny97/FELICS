@@ -2,7 +2,8 @@ import cv2 as cv
 import AdjustedBinaryCode as abc
 from pixelPosition import left_center_right
 from array import array as arr
-
+from PIL import Image
+import PIL
 
 def FelicsProva(i):
     bin_array_dim = arr("B")
@@ -10,7 +11,7 @@ def FelicsProva(i):
 
     file = open("Test/Bianco e nero/test" + str(i) + ".bnr", "wb")
 
-    path = "Immagini/Bianco e nero/BMP/"+str(i)+".bmp"
+    path = "Immagini/Bianco e nero/PGM/"+str(i)+".pgm"
 
     img = cv.imread(path)
 
@@ -87,7 +88,8 @@ def FelicsProva(i):
     file.write(bytes(bin_array))
     file.close()
 
-
 for i in range(1,35):
     print(i)
     FelicsProva(i)
+
+
