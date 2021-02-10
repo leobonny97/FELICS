@@ -8,7 +8,7 @@ bin_array = arr("B")
 
 file = open("test.bnr", "wb")
 
-path = "Immagini/a colori/1.bmp"
+path = "Immagini/a colori/BMP/1.bmp"
 
 img = cv.imread(path, 1)
 

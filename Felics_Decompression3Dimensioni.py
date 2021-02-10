@@ -10,7 +10,7 @@ x = 0
 y = 0
 result = ''
 
-with open("test.bnr", "rb") as f:
+with open("Test/FELICS/a colori/test1.bnr", "rb") as f:
     x1 = f.read(1)
     if not x1:
         print("File terminato")
