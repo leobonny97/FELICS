@@ -6,7 +6,7 @@ from array import array as arr
 bin_array_dim = arr("B")
 bin_array = arr("B")
 
-file = open("test.bnr", "wb")
+file = open("Test/FELICS/4 dimensioni/test1.bnr", "wb")
 
 path = "Immagini/a colori/BMP/1.bmp"
 
